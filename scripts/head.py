@@ -1,5 +1,8 @@
+# served for generate semantic category
 # from dataset.online_loader_cls import *
+# served for retrieval
 from dataset.online_loader import *
+
 from torchvision import models
 from model.Net import Binary_hash, ResNet, MoCo, ResNetClass
 import os
@@ -16,7 +19,10 @@ import torch.nn as nn
 import random
 import shutil
 from torch.utils.tensorboard import SummaryWriter
+
+# served for generate semantic category
 # from scripts.utils_cls import *
+# served for retrieval
 from scripts.utils import *
 import pdb
 
