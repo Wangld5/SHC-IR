@@ -49,7 +49,7 @@ def get_config():
         "without_BN": False,
         "epoch": 1000,
         "test_map": 3,
-        "stop_iter": 5,
+        "stop_iter": 10,
         # "save_path": "./results/imagenet/OurLossWithPair",
         # "center_path": "./centerswithoutVar/CSQ_init_True_100_64.npy"
         # "save_center": "./results/imagenet/OurLossWithPair/Ours_64.npy",
