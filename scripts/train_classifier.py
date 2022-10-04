@@ -49,11 +49,7 @@ def train_val(config):
         train_loader, test_loader, database_loader, num_train, num_test, num_database = get_imagenet_data(config)
     else:
         train_loader, test_loader, database_loader, num_train, num_test, num_database = get_data(config)
-    # net = ResNetClass(config['n_class']).cuda()
-    # net = AlexNetClass(config['n_class']).cuda()
-    net = VGGNetClass(config['n_class']).cuda()
-    # constraints = weightConstrain()
-    # net._modules['model_resnet.fc'].apply(constraints)
+    net = ResNetClass(config['n_class']).cuda()
     if config['n_gpu'] > 1:
         net = torch.nn.DataParallel(net)
 
@@ -83,7 +79,7 @@ def train_val(config):
             optimizer.zero_grad()
 
             probs = net(img)
-            loss = cross_entropy_loss(probs, label, net.fc.weight)
+            loss = cross_entropy_loss(probs, label, net.model_resnet.fc.weight)
             temp_acc, temp_batch= top_k_accuracy(probs, label, k=1)
             train_acc += temp_acc
             total += temp_batch

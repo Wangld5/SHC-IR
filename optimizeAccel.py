@@ -246,6 +246,7 @@ def Lp_box(B, best_B, n_class, d_max, bit, rho, gamma, error, best_st, W):
 if __name__ == '__main__':
 
     for bit in [16, 32, 64]:
+        # load the semantic categories saved in weight folder
         W = np.load("weight/ResNet_car_ims_class_head_0.005.npy")
         n_class = 196
         initWithCSQ = True

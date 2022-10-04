@@ -38,7 +38,7 @@ class OurLossZero(NN.Module):
         cos_loss = self.cos_eps_loss(u, y, ind)
         Q_loss = (u.abs() - 1).pow(2).mean()
         
-        loss = cos_loss + self.config['beta'] * pair_loss + self.config['lambda'] * Q_loss
+        loss = cos_loss + self.config['lambda'] * Q_loss
         return loss, cos_loss
     
     def cos_eps_loss(self, u, y, ind):
@@ -54,7 +54,7 @@ class OurLossZero(NN.Module):
             neg_pair = cos_sim[i][s[i] == 0] # n_class - 1
             pos_eps = torch.exp(K**0.5 * (pos_pair - m))
             neg_eps = torch.exp(K**0.5 * (neg_pair - m))
-            batch_loss = torch.log(pos_eps / (pos_eps + torch.sum(neg_eps))) + torch.sum(torch.log(1 - neg_eps / (pos_eps + torch.sum(neg_eps))))
+            batch_loss = torch.log(pos_eps / (pos_eps + torch.sum(neg_eps))) + torch.sum(torch.log(1 - neg_eps / (pos_eps + torch.sum(neg_eps)))) / (self.config['n_class']-1)
             loss += batch_loss
         loss /= u_norm.shape[0]
         return -loss
