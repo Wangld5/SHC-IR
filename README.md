@@ -5,7 +5,7 @@ The code of paper "Image Retrieval with Well-Separated Semantic Hash Centers" ac
 - PyTorch 1.7.1 + cuda 11.2
 
 ## Get Started
-1. three dataset ImageNet, Stanford Cars, NABirds should be download on their official website
+1. three dataset ImageNet, Stanford Cars, NABirds should be download from their official website
 2. run `main_cls.py` to generate and save semantic category for three datasets.  
 3. run `optimizeAccel.py` to generate and save hash centers for each datasets.  
 4. run `main.py` to get mAP results for three datasets.
